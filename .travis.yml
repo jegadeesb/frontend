@@ -1,9 +1,7 @@
 sudo:required
 services:
   - docker
-
 before-install:
   - docker build -t frontendapp -f Dockerfile.dev .
-
 script:
   - docker run frontendapp npm run test -- --coverage
