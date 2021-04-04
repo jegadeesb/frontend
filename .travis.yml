@@ -1,7 +1,10 @@
-sudo:required
+language: generic
+sudo: required
 services:
   - docker
+
 before-install:
-  - docker build -t frontendapp -f Dockerfile.dev .
+  - docker build -t frontend -f Dockerfile.dev
+
 script:
-  - docker run frontendapp npm run test -- --coverage
+  - docker run -e CI=true USERNAME/docker-react npm run test
